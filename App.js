@@ -1,23 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
+import { pink } from './utils/colors';
+import DefaultStatusBar from './components/DefaultStatusBar';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View>
+        <DefaultStatusBar backgroundColor={pink} barStyle='light-content' />
+        <Text>Hello</Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
