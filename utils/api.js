@@ -26,3 +26,7 @@ export function fetchDecks() {
     }
   )
 }
+
+export function fetchDeck(deck) {
+  return fetchDecks()[deck]
+}

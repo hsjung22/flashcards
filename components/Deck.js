@@ -6,7 +6,8 @@ class Deck extends Component {
     const { deck } = this.props
     return (
       <TouchableOpacity onPress={() => { this.props.navigation.navigate(
-        'DeckDetail'
+        'DeckDetail',
+        { title: deck.title }
       )}}>
         <Text>
           { deck.title }
