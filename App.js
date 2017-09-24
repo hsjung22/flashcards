@@ -6,6 +6,7 @@ import { pink, purple, white } from './utils/colors'
 import DefaultStatusBar from './components/DefaultStatusBar'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
+import DeckDetail from './components/DeckDetail'
 
 const Tabs = TabNavigator({
   Decks:{
@@ -46,15 +47,15 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs
   },
-  // EntryDetail: {
-  //   screen: EntryDetail,
-  //   navigationOptions: {
-  //     headerTintColor: white,
-  //     headerStyle: {
-  //       backgroundColor: purple
-  //     }
-  //   }
-  // }
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    }
+  }
 })
 
 export default class App extends Component {

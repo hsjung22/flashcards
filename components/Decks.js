@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { fetchDecks } from '../utils/api'
+import Deck from './Deck'
 
 class Decks extends Component {
+  state = {
+    decks: {}
+  }
+
+  componentDidMount() {
+    this.setState({ decks: fetchDecks() })
+  }
+
   render() {
+    const { decks } = this.state
+
     return (
       <View>
-        <Text>
-          Decks component.
-        </Text>
+        {Object.keys(decks).map(deck =>
+          <Deck key={deck} deck={decks[deck]} navigation={this.props.navigation} />
+        )}
       </View>
     )
   }
