@@ -18,8 +18,6 @@ class DeckDetail extends Component {
   render() {
     const { deck } = this.state
 
-    console.log('deck', JSON.stringify(deck));
-
     return (
       <View>
         <Text>
@@ -28,13 +26,21 @@ class DeckDetail extends Component {
         <Text>
           {deck.questions && deck.questions.length} cards
         </Text>
+
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => { console.warn("under construction") }}
         >
           <Text>Add Card</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => { this.props.navigation.navigate(
+            'Quiz',
+            {
+              questions: deck.questions,
+              index: 0,
+            }
+          ) }}
         >
           <Text>Start Quiz</Text>
         </TouchableOpacity>
