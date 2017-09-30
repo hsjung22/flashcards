@@ -7,21 +7,21 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { pink, purple, white } from './utils/colors'
 import DefaultStatusBar from './components/DefaultStatusBar'
-import Decks from './components/Decks'
-import NewDeck from './components/NewDeck'
+import DecksContainer from './containers/DecksContainer'
+import NewDeckContainer from './containers/NewDeckContainer'
 import DeckDetail from './components/DeckDetail'
 import Quiz from './components/Quiz'
 
 const Tabs = TabNavigator({
   Decks:{
-    screen: Decks,
+    screen: DecksContainer,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     }
   },
   NewDeck:{
-    screen: NewDeck,
+    screen: NewDeckContainer,
     navigationOptions: {
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />

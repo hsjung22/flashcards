@@ -40,11 +40,6 @@ export function fetchDeck(deck) {
   // return fetchDecks()[deck]
 }
 
-export function createDeck(title) {
-  return  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
-    [title]: {
-      title,
-      questions: [],
-    }
-  }))
+export function createDeck(newDeck) {
+  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeck))
 }

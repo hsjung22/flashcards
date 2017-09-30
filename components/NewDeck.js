@@ -19,14 +19,40 @@ class NewDeck extends Component {
 
   handleSubmit = () => {
     const { title } = this.state
-    createDeck(title)
+    const newDeck = {
+      [title]: {
+        title,
+        questions: [],
+      }
+    }
 
-
+    // save to AsyncStorage
+    createDeck(newDeck)
+    // update redux store
+    this.props.receiveDeck(newDeck)
 
     // save deck then redirect
 
     // redirect to new deck
   }
+
+  // submit = () => {
+  //   const key = timeToString()
+  //   const entry = this.state
+  //   // update redux store
+  //   this.props.dispatch(addEntry({
+  //     [key]: entry
+  //   }))
+  //   // reset component state
+  //   this.setState(this._initialState)
+  //   this.toHome()
+  //   // save to AsyncStorage
+  //   submitEntry({ key, entry })
+  //
+  //   clearLocalNotification()
+  //     .then(setLocalNotification)
+  // }
+
 
   // <TouchableOpacity onPress={() => { this.props.navigation.navigate(
   //   'DeckDetail',
