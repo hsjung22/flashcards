@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import Question from './Question'
+import Answer from './Answer'
 
 class Quiz extends Component {
+  state = {
+    mode: 'question' // 'answer'
+  }
+
+  handleModeChange = (mode) => {
+    this.setState({ mode })
+  }
+
   render() {
     const {
       questions,
@@ -11,12 +21,20 @@ class Quiz extends Component {
 
     return (
       <View>
-        <Text>
-          Question: {currentQuiz.question}
-        </Text>
+        {this.state.mode === 'question' ? (
+          <Question
+            currentQuiz={currentQuiz}
+            handleModeChange={this.handleModeChange}
+          />
+        ) : (
+          <Answer
+            currentQuiz={currentQuiz}
+            handleModeChange={this.handleModeChange}
+          />
+        )}
 
         {questions.length - 1 === index
-          ? <Text> no more questions left... </Text>
+          ? <Text> no more questions left...(Done screen) </Text>
           : <TouchableOpacity
               onPress={() => { this.props.navigation.navigate(
                 'Quiz',
@@ -26,7 +44,7 @@ class Quiz extends Component {
                 }
               ) }}
             >
-              <Text>Next</Text>
+              <Text>Correct/Incorrect</Text>
             </TouchableOpacity>}
       </View>
     )
