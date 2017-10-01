@@ -21,6 +21,10 @@ class Quiz extends Component {
 
     return (
       <View>
+        <Text>
+          {index + 1} / {questions.length}
+        </Text>
+
         {this.state.mode === 'question' ? (
           <Question
             currentQuiz={currentQuiz}
