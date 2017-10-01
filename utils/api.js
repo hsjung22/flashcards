@@ -1,31 +1,3 @@
-// export function fetchDecks() {
-//   return (
-//     {
-//       React: {
-//         title: 'React',
-//         questions: [
-//           {
-//             question: 'What is React?',
-//             answer: 'A library for managing user interfaces'
-//           },
-//           {
-//             question: 'Where do you make Ajax requests in React?',
-//             answer: 'The componentDidMount lifecycle event'
-//           }
-//         ]
-//       },
-//       JavaScript: {
-//         title: 'JavaScript',
-//         questions: [
-//           {
-//             question: 'What is a closure?',
-//             answer: 'The combination of a function and the lexical environment within which that function was declared.'
-//           }
-//         ]
-//       }
-//     }
-//   )
-// }
 import { AsyncStorage } from 'react-native'
 
 const DECK_STORAGE_KEY = 'Flashcards:deck'
@@ -35,11 +7,24 @@ export function fetchDecks() {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
 }
 
-export function fetchDeck(deck) {
-  return {}
-  // return fetchDecks()[deck]
+function fetchDeck(title) {
+  return fetchDecks().then(data => JSON.parse(data)[title])
 }
 
 export function createDeck(newDeck) {
   return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeck))
+}
+
+export function createCard(title, card) {
+
+  fetchDeck(title).then((deck) => {
+    const newDeck = {
+      ...deck,
+      questions: [
+        ...deck.questions,
+        card
+      ]
+    }
+    return createDeck({ [title]: newDeck })
+  })
 }

@@ -1,23 +1,9 @@
 import React, { Component } from 'react'
-import { fetchDeck } from '../utils/api'
 import { View, Text, TouchableOpacity } from 'react-native'
 
-class DeckDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deck: {},
-    };
-  }
-
-  componentDidMount() {
-    const { title } = this.props.navigation.state.params
-    this.setState({ deck: fetchDeck(title) })
-  }
-
+class DeckMenu extends Component {
   render() {
-    const { deck } = this.state
-
+    const { deck } = this.props
     return (
       <View>
         <Text>
@@ -28,7 +14,10 @@ class DeckDetail extends Component {
         </Text>
 
         <TouchableOpacity
-          onPress={() => { console.warn("under construction") }}
+          onPress={() => { this.props.navigation.navigate(
+            'NewCard',
+            { title: deck.title }
+          ) }}
         >
           <Text>Add Card</Text>
         </TouchableOpacity>
@@ -49,4 +38,4 @@ class DeckDetail extends Component {
   }
 }
 
-export default DeckDetail
+export default DeckMenu

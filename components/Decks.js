@@ -4,13 +4,8 @@ import { fetchDecks } from '../utils/api'
 import Deck from './Deck'
 
 class Decks extends Component {
-  // state = {
-  //   decks: this.props.decks
-  // }
-
   componentDidMount() {
     fetchDecks().then((data) => {
-        // this.setState({ decks: JSON.parse(data) })
         this.props.receiveDecks(JSON.parse(data))
     })
   }
