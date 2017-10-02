@@ -27,20 +27,23 @@ export function receiveCard (title, card) {
   })
 }
 
-export function receiveCorrect() {
+export function receiveCorrect(nth) {
   return ({
-    type: RECEIVE_CORRECT
+    type: RECEIVE_CORRECT,
+    nth,
   })
 }
 
-export function receiveIncorrect() {
+export function receiveIncorrect(nth) {
   return ({
-    type: RECEIVE_INCORRECT
+    type: RECEIVE_INCORRECT,
+    nth,
   })
 }
 
-export function resetScore() {
+export function resetScore(nth) {
   return ({
-    type: RESET_SCORE
+    type: RESET_SCORE,
+    nth,
   })
 }

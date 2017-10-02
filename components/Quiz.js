@@ -15,12 +15,12 @@ class Quiz extends Component {
   }
 
   handleCorrect = () => {
-    this.props.receiveCorrect()
+    this.props.receiveCorrect(this.props.navigation.state.params.index)
     this.navigateNextQuiz()
   }
 
   handleIncorrect = () => {
-    this.props.receiveIncorrect()
+    this.props.receiveIncorrect(this.props.navigation.state.params.index)
     this.navigateNextQuiz()
   }
 
@@ -74,6 +74,7 @@ class Quiz extends Component {
       ) : (
         <QuizFinish
           score={this.props.score}
+          totalQuestions={questions.length}
         />
       )
     )
