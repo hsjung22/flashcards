@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { receiveDecks } from '../actions'
 import Decks from '../components/Decks'
 
-function mapStateToProps(decks) {
+function mapStateToProps({ decks }) {
   return { decks: decks }
 }
 

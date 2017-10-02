@@ -11,7 +11,7 @@ import DecksContainer from './containers/DecksContainer'
 import NewDeckContainer from './containers/NewDeckContainer'
 import DeckMenuContainer from './containers/DeckMenuContainer'
 import NewCardContainer from './containers/NewCardContainer'
-import Quiz from './components/Quiz'
+import QuizContainer from './containers/QuizContainer'
 
 const Tabs = TabNavigator({
   Decks:{
@@ -62,7 +62,7 @@ const MainNavigator = StackNavigator({
     }
   },
   Quiz: {
-    screen: Quiz,
+    screen: QuizContainer,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
