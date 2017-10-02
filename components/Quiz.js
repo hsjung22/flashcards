@@ -24,7 +24,22 @@ class Quiz extends Component {
     this.navigateNextQuiz()
   }
 
-  navigateNextQuiz = () => {
+  navigateNextQuiz = (reset = false) => {
+    const {
+      questions,
+      index,
+    } = this.props.navigation.state.params
+
+    this.props.navigation.navigate(
+      'Quiz',
+         {
+           questions,
+           index: reset ? 0 : index + 1,
+         }
+    )
+  }
+
+  navigateRestartQuiz = () => {
     const {
       questions,
       index,
@@ -34,12 +49,10 @@ class Quiz extends Component {
       'Quiz',
          {
            questions: questions,
-           index: index + 1,
+           index: 0,
          }
     )
   }
-
-
 
   render() {
     const {
@@ -75,6 +88,7 @@ class Quiz extends Component {
         <QuizFinish
           score={this.props.score}
           totalQuestions={questions.length}
+          navigateNextQuiz={this.navigateNextQuiz}
         />
       )
     )
