@@ -28,29 +28,23 @@ class Quiz extends Component {
     const {
       questions,
       index,
+      title,
     } = this.props.navigation.state.params
 
     this.props.navigation.navigate(
       'Quiz',
-         {
-           questions,
-           index: reset ? 0 : index + 1,
-         }
+       {
+         title,
+         questions,
+         index: reset ? 0 : index + 1,
+       }
     )
   }
 
-  navigateRestartQuiz = () => {
-    const {
-      questions,
-      index,
-    } = this.props.navigation.state.params
-
+  navigateQuizMenu = () => {
     this.props.navigation.navigate(
-      'Quiz',
-         {
-           questions: questions,
-           index: 0,
-         }
+      'DeckMenu',
+      { title: this.props.navigation.state.params.title }
     )
   }
 
@@ -89,6 +83,7 @@ class Quiz extends Component {
           score={this.props.score}
           totalQuestions={questions.length}
           navigateNextQuiz={this.navigateNextQuiz}
+          navigateQuizMenu={this.navigateQuizMenu}
         />
       )
     )

@@ -4,19 +4,22 @@ import { View, Text, TouchableOpacity } from 'react-native'
 class DeckMenu extends Component {
   render() {
     const { deck } = this.props
+    const title = deck.title
+    const questions = deck.questions
+
     return (
       <View>
         <Text>
-          { deck.title }
+          { title }
         </Text>
         <Text>
-          {deck.questions && deck.questions.length} cards
+          {questions && questions.length} cards
         </Text>
 
         <TouchableOpacity
           onPress={() => { this.props.navigation.navigate(
             'NewCard',
-            { title: deck.title }
+            { title }
           ) }}
         >
           <Text>Add Card</Text>
@@ -26,7 +29,8 @@ class DeckMenu extends Component {
           onPress={() => { this.props.navigation.navigate(
             'Quiz',
             {
-              questions: deck.questions,
+              title,
+              questions,
               index: 0,
             }
           ) }}
