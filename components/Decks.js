@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, List, FlatList } from 'react-native'
 import { fetchDecks } from '../utils/api'
 import Deck from './Deck'
 
@@ -10,17 +10,22 @@ class Decks extends Component {
     })
   }
 
+
+
   render() {
     const { decks } = this.props
-
-    console.log('decks', JSON.stringify(decks));
+    const decksArray = Object.keys(decks).map(deck => decks[deck])
 
     return (
       decks ? (
-        <View>
-          {Object.keys(decks).map(deck =>
-            <Deck key={deck} deck={decks[deck]} navigation={this.props.navigation} />
-          )}
+        <View style={styles.column}>
+          <FlatList
+            data={decksArray}
+            keyExtractor={item => item.title}
+            renderItem={({ item }) => (
+              <Deck key={item.title} deck={item} navigation={this.props.navigation} />
+            )}
+          />
         </View>
       ) : (
         <View>
@@ -30,5 +35,13 @@ class Decks extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  column: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+  },
+})
 
 export default Decks

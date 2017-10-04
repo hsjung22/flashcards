@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { pink, purple, white } from '../utils/colors'
 
 class Deck extends Component {
   render() {
     const { deck } = this.props
     return (
-      <TouchableOpacity onPress={() => { this.props.navigation.navigate(
+      <TouchableOpacity style={styles.deck} onPress={() => { this.props.navigation.navigate(
         'DeckMenu',
         { title: deck.title }
       )}}>
-        <Text>
+        <Text style={styles.deckTitle}>
           { deck.title }
         </Text>
         <Text>
@@ -19,5 +20,21 @@ class Deck extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  deck: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 90,
+    marginBottom: 10,
+    backgroundColor: '#e76e63',
+  },
+  deckTitle: {
+    color: white,
+    fontSize: 30,
+    textAlign: 'center',
+  },
+
+})
 
 export default Deck
