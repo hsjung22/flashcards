@@ -10,8 +10,6 @@ class Decks extends Component {
     })
   }
 
-
-
   render() {
     const { decks } = this.props
     const decksArray = Object.keys(decks).map(deck => decks[deck])

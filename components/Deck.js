@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
   },
-
 })
 
 export default Deck
