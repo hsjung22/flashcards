@@ -16,7 +16,7 @@ class Decks extends Component {
 
     return (
       decks ? (
-        <View style={styles.column}>
+        <View style={styles.container}>
           <FlatList
             data={decksArray}
             keyExtractor={item => item.title}
@@ -35,7 +35,7 @@ class Decks extends Component {
 }
 
 const styles = StyleSheet.create({
-  column: {
+  container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch',

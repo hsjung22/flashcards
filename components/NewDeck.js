@@ -44,7 +44,7 @@ class NewDeck extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.column}>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Text style={styles.question}>
           What is the title of your new deck?
         </Text>
@@ -62,7 +62,7 @@ class NewDeck extends Component {
 }
 
 const styles = StyleSheet.create({
-  column: {
+  container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
