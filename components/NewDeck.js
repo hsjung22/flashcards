@@ -10,9 +10,11 @@ import {
 import { createDeck } from '../utils/api'
 
 class NewDeck extends Component {
-  state = {
+  _initialState = {
     title: ''
   }
+
+  state = this._initialState
 
   handleTextChange = (title) => {
     this.setState({ title })
@@ -31,34 +33,14 @@ class NewDeck extends Component {
     createDeck(newDeck)
     // update redux store
     this.props.receiveDeck(newDeck)
-
-    // save deck then redirect
-
+    // reset state
+    this.setState(this._initialState)
     // redirect to new deck
+    this.props.navigation.navigate(
+      'DeckMenu',
+      { title }
+    )
   }
-
-  // submit = () => {
-  //   const key = timeToString()
-  //   const entry = this.state
-  //   // update redux store
-  //   this.props.dispatch(addEntry({
-  //     [key]: entry
-  //   }))
-  //   // reset component state
-  //   this.setState(this._initialState)
-  //   this.toHome()
-  //   // save to AsyncStorage
-  //   submitEntry({ key, entry })
-  //
-  //   clearLocalNotification()
-  //     .then(setLocalNotification)
-  // }
-
-
-  // <TouchableOpacity onPress={() => { this.props.navigation.navigate(
-  //   'DeckDetail',
-  //   { title: deck.title }
-  // )}}>
 
   render() {
     return (
