@@ -9,11 +9,12 @@ import {
 import { createCard } from '../utils/api'
 
 class NewCard extends Component {
-  state = {
+  _initialState = {
     question: '',
     answer: '',
   }
 
+  state = this._initialState
 
   handleSubmit = () => {
     const { question, answer } = this.state
@@ -24,14 +25,14 @@ class NewCard extends Component {
     createCard(title, card)
     // update redux store
     this.props.receiveCard(title, card)
+    // reset state
+    this.setState(this._initialState)
     // redirect to new deck
+    this.props.navigation.navigate(
+      'DeckMenu',
+      { title }
+    )
   }
-
-
-  // <TouchableOpacity onPress={() => { this.props.navigation.navigate(
-  //   'DeckDetail',
-  //   { title: deck.title }
-  // )}}>
 
   render() {
     return (
