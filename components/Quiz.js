@@ -6,6 +6,17 @@ import CorrectIncorrect from './CorrectIncorrect'
 import QuizFinish from './QuizFinish'
 
 class Quiz extends Component {
+  static navigationOptions = ({ navigation }) => {
+    const {
+      questions,
+      index,
+    } = navigation.state.params
+    const currentQuiz = questions[index]
+    const title = currentQuiz ? 'Quiz' : 'Finish'
+
+    return { title }
+  }
+
   state = {
     mode: 'question' // 'answer'
   }

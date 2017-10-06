@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 class DeckMenu extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title
+  })
+
   render() {
     const { deck } = this.props
     const title = deck.title

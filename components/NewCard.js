@@ -10,6 +10,10 @@ import {
 import { createCard } from '../utils/api'
 
 class NewCard extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Add Card'
+  })
+
   _initialState = {
     question: '',
     answer: '',
