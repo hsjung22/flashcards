@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Question from './Question'
 import Answer from './Answer'
 import CorrectIncorrect from './CorrectIncorrect'
@@ -57,26 +57,31 @@ class Quiz extends Component {
 
     return (
       currentQuiz ? (
-        <View>
-          <Text>
-            {index + 1} / {questions.length}
-          </Text>
-
-          {this.state.mode === 'question' ? (
-            <Question
-              currentQuiz={currentQuiz}
-              handleModeChange={this.handleModeChange}
-            />
-          ) : (
-            <Answer
-              currentQuiz={currentQuiz}
-              handleModeChange={this.handleModeChange}
-            />
-          )}
-           <CorrectIncorrect
-             handleCorrect={this.handleCorrect}
-             handleIncorrect={this.handleIncorrect}
-           />
+        <View style={styles.container}>
+          <View style={{ flex: 1, alignSelf: 'flex-start', }}>
+            <Text style={styles.counter}>
+              {index + 1}/{questions.length}
+            </Text>
+          </View>
+          <View style={{ flex: 3 }}>
+            {this.state.mode === 'question' ? (
+              <Question
+                currentQuiz={currentQuiz}
+                handleModeChange={this.handleModeChange}
+              />
+            ) : (
+              <Answer
+                currentQuiz={currentQuiz}
+                handleModeChange={this.handleModeChange}
+              />
+            )}
+          </View>
+          <View style={{ flex: 2 }}>
+            <CorrectIncorrect
+              handleCorrect={this.handleCorrect}
+               handleIncorrect={this.handleIncorrect}
+             />
+           </View>
         </View>
       ) : (
         <QuizFinish
@@ -89,5 +94,16 @@ class Quiz extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  counter: {
+    fontSize: 20,
+  },
+})
 
 export default Quiz
