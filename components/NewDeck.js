@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import { createDeck } from '../utils/api'
+import { black, danger, white } from '../utils/colors'
 
 class NewDeck extends Component {
   _initialState = {
@@ -46,7 +47,7 @@ class NewDeck extends Component {
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Text style={styles.question}>
-          What is the title of your new deck?
+          Name your deck!
         </Text>
         <TextInput
           style={styles.input}
@@ -64,32 +65,33 @@ class NewDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   question: {
-    marginTop: 40,
-    color: 'black',
+    color: black,
     fontSize: 30,
     textAlign: 'center',
+    margin: 10,
   },
   input: {
     width: 300,
     height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: black,
     borderRadius: 7,
-    margin: 50,
+    margin: 10,
   },
   button: {
     padding: 10,
-    backgroundColor: 'black',
+    backgroundColor: black,
     alignSelf: 'center',
     borderRadius: 5,
+    margin: 10,
   },
   buttonText: {
-    color: 'white',
+    color: white,
     fontSize: 20,
   },
 })

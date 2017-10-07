@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { black, toggle } from '../utils/colors'
 
 function Question ({ currentQuiz, handleModeChange }) {
   return (
@@ -19,13 +20,13 @@ function Question ({ currentQuiz, handleModeChange }) {
 const styles = StyleSheet.create({
   quiz: {
     marginTop: 40,
-    color: 'black',
+    color: black,
     fontSize: 30,
     textAlign: 'center',
   },
   toggleText: {
     marginTop: 20,
-    color: 'red',
+    color: toggle,
     fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',

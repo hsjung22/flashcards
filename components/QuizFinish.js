@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { black, white } from '../utils/colors'
 
 function QuizFinish ({ score, totalQuestions, navigateNextQuiz, navigateQuizMenu }) {
   const numberCorrect = Object.keys(score).reduce((sum, index) => {
@@ -39,15 +40,20 @@ const styles = StyleSheet.create({
   },
   score: {
     fontSize: 20,
+    margin: 10,
   },
   button: {
+    alignItems: 'center',
+    width: 200,
+    margin: 10,
     padding: 10,
     alignSelf: 'center',
-    backgroundColor: 'green',
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: black,
   },
   buttonText: {
-    color: 'white',
+    color: black,
     fontSize: 20,
   },
 })

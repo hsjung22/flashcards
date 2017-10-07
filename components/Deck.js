@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { pink, purple, white } from '../utils/colors'
+import { white, black } from '../utils/colors'
 
 class Deck extends Component {
   render() {
@@ -13,7 +13,7 @@ class Deck extends Component {
         <Text style={styles.deckTitle}>
           { deck.title }
         </Text>
-        <Text>
+        <Text style={{ color: black }}>
           { deck.questions.length } cards
         </Text>
       </TouchableOpacity>
@@ -26,11 +26,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 90,
-    marginBottom: 10,
-    backgroundColor: '#e76e63',
+    borderBottomColor: black,
+    borderBottomWidth: 0.5,
+    backgroundColor: white,
   },
   deckTitle: {
-    color: white,
+    color: black,
     fontSize: 30,
     textAlign: 'center',
   },

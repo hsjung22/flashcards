@@ -4,6 +4,7 @@ import Question from './Question'
 import Answer from './Answer'
 import CorrectIncorrect from './CorrectIncorrect'
 import QuizFinish from './QuizFinish'
+import { black } from '../utils/colors'
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -69,12 +70,12 @@ class Quiz extends Component {
     return (
       currentQuiz ? (
         <View style={styles.container}>
-          <View style={{ flex: 1, alignSelf: 'flex-start', }}>
+          <View style={{ flex: 1, alignSelf: 'flex-start' }}>
             <Text style={styles.counter}>
               {index + 1}/{questions.length}
             </Text>
           </View>
-          <View style={{ flex: 3 }}>
+          <View style={{ flex: 4 }}>
             {this.state.mode === 'question' ? (
               <Question
                 currentQuiz={currentQuiz}
@@ -87,7 +88,7 @@ class Quiz extends Component {
               />
             )}
           </View>
-          <View style={{ flex: 2 }}>
+          <View style={{ flex: 4 }}>
             <CorrectIncorrect
               handleCorrect={this.handleCorrect}
                handleIncorrect={this.handleIncorrect}
@@ -113,6 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   counter: {
+    color: black,
     fontSize: 20,
   },
 })

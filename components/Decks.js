@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, List, FlatList } from 'react-native'
 import { fetchDecks } from '../utils/api'
+import { danger } from '../utils/colors'
 import Deck from './Deck'
 
 class Decks extends Component {
@@ -12,13 +13,12 @@ class Decks extends Component {
 
   render() {
     const { decks } = this.props
-    const decksArray = Object.keys(decks).map(deck => decks[deck])
 
     return (
-      decks ? (
+      decks && Object.keys(decks).length > 0 ? (
         <View style={styles.container}>
           <FlatList
-            data={decksArray}
+            data={Object.keys(decks).map(deck => decks[deck])}
             keyExtractor={item => item.title}
             renderItem={({ item }) => (
               <Deck key={item.title} deck={item} navigation={this.props.navigation} />
@@ -26,8 +26,8 @@ class Decks extends Component {
           />
         </View>
       ) : (
-        <View>
-          <Text>No decks available</Text>
+        <View style={styles.noDecksContainer}>
+          <Text style={styles.noDecksText}>No decks available</Text>
         </View>
       )
     )
@@ -40,6 +40,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
+  noDecksContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noDecksText: {
+    color: danger,
+    fontSize: 20,
+  }
 })
 
 export default Decks

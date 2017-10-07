@@ -5,7 +5,7 @@ import reducer from './reducers'
 import { View, Platform, StatusBar } from 'react-native'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import { pink, purple, white } from './utils/colors'
+import { header, black } from './utils/colors'
 import DefaultStatusBar from './components/DefaultStatusBar'
 import DecksContainer from './containers/DecksContainer'
 import NewDeckContainer from './containers/NewDeckContainer'
@@ -33,10 +33,10 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    activeTintColor: Platform.OS === 'ios' ? header : black,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      backgroundColor: Platform.OS === 'ios' ? black : header,
       shadowColor: 'rgba(0,0,0,0.24)',
       shadowOffset: {
         width: 0,
@@ -55,27 +55,27 @@ const MainNavigator = StackNavigator({
   DeckMenu: {
     screen: DeckMenuContainer,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: header
       }
     }
   },
   Quiz: {
     screen: QuizContainer,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: header
       }
     }
   },
   NewCard: {
     screen: NewCardContainer,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: header
       }
     }
   },
@@ -86,7 +86,7 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{ flex: 1 }}>
-          <DefaultStatusBar backgroundColor={pink} barStyle='light-content' />
+          <DefaultStatusBar backgroundColor={header} barStyle='light-content' />
           <MainNavigator />
         </View>
       </Provider>

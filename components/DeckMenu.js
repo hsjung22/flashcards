@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { black, white } from '../utils/colors'
 
 class DeckMenu extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -33,7 +34,7 @@ class DeckMenu extends Component {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.menuButton, { backgroundColor: 'black' }]}
+            style={[styles.menuButton, { backgroundColor: black }]}
             onPress={() => { this.props.navigation.navigate(
               'Quiz',
               {
@@ -43,7 +44,7 @@ class DeckMenu extends Component {
               }
             ) }}
           >
-            <Text style={[styles.buttonText, { color: 'white' }]}>Start Quiz</Text>
+            <Text style={[styles.buttonText, { color: white }]}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deckTitle: {
-    color: 'black',
+    color: black,
     fontSize: 36,
     textAlign: 'center',
   },
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: black,
   },
   buttonText: {
     fontSize: 20,

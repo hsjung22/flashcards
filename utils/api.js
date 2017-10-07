@@ -3,7 +3,6 @@ import { AsyncStorage } from 'react-native'
 const DECK_STORAGE_KEY = 'Flashcards:deck'
 
 export function fetchDecks() {
-  // return AsyncStorage.clear()
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
 }
 
