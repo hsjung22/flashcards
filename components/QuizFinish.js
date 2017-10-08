@@ -1,35 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { black, white } from '../utils/colors'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
-function QuizFinish ({ score, totalQuestions, navigateNextQuiz, navigateQuizMenu }) {
-  const numberCorrect = Object.keys(score).reduce((sum, index) => {
-    return sum + score[index]
-  }, 0)
+class QuizFinish extends Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.score}>
-        Score: {numberCorrect}/{totalQuestions}
-      </Text>
-      <TouchableOpacity
-        onPress={() => navigateNextQuiz(true)}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>
-          Restart Quiz
+  render() {
+    const {
+      score,
+      totalQuestions,
+      navigateNextQuiz,
+      navigateQuizMenu
+    } = this.props
+
+    const numberCorrect = Object.keys(score).reduce((sum, index) => {
+      return sum + score[index]
+    }, 0)
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.score}>
+          Score: {numberCorrect}/{totalQuestions}
         </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigateQuizMenu()}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>
-          Back to Deck
-        </Text>
-      </TouchableOpacity>
-    </View>
-  )
+        <TouchableOpacity
+          onPress={() => navigateNextQuiz(true)}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
+            Restart Quiz
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigateQuizMenu()}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
+            Back to Deck
+          </Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

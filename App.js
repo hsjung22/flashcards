@@ -12,6 +12,7 @@ import NewDeckContainer from './containers/NewDeckContainer'
 import DeckMenuContainer from './containers/DeckMenuContainer'
 import NewCardContainer from './containers/NewCardContainer'
 import QuizContainer from './containers/QuizContainer'
+import { setLocalNotification } from './utils/helpers'
 
 const Tabs = TabNavigator({
   Decks:{
@@ -82,6 +83,10 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>
