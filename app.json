@@ -1,4 +1,6 @@
 {
+  "name": "flashcards",
+  "displayName": "flashcards",
   "expo": {
     "sdkVersion": "20.0.0"
   }
